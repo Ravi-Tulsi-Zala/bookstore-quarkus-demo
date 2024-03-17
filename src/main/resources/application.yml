@@ -1,0 +1,35 @@
+quarkus:
+  datasource:
+    db-kind: postgresql
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/bookstore
+      username: ravi
+      password: ravi
+      driver: org.postgresql.Driver
+    devservices:
+      enabled: false
+  hibernate-orm:
+    database:
+      generation: create
+  micrometer:
+    binder:
+      http-server:
+        ignore-patterns:
+          - '/q.*'
+  flyway:
+    locations: classpath:db/migration
+
+mp:
+  openapi:
+    extensions:
+      smallrye:
+        info:
+          title: Bookstore API
+          version: 0.0.1
+          description: API for retrieving books
+          contact:
+            email: techsupport@bookstore.com
+            name: Bookstore API Support
+          license:
+            name: Apache 2.0
+            url: http://www.apache.org/licenses/LICENSE-2.0.html
